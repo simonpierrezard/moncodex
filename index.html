@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codex des Compagnons</title>
+    <!-- Ajout de la police médiévale Cinzel depuis Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Entête avec police médiévale */
+    .header {
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+
+    /* Titre avec police médiévale */
+    .title {
+      font-family: 'Cinzel', serif;
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #4CAF50;
+    }
+
+    /* Grille des compagnons */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* Style pour chaque compagnon */
+    .companion {
+      border: 2px solid #ccc;
+      padding: 10px;
+      background-color: #fff;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    .companion img {
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .companion-name {
+      margin-top: 8px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Entête -->
+  <div class="header">Donjon & Dragon Edition VL</div>
+
+  <!-- Titre -->
+  <div class="title">Codex des Compagnons</div>
+  
+    <div class="filter-section">
+    <label for="playerSelect">Choisissez un joueur :</label>
+    <select id="playerSelect" class="player-select">
+      <option value="melanie">Mélanie</option>
+      <option value="simonPierre">Simon-Pierre</option>
+      <option value="jonathan">Jonathan</option>
+      <option value="marieEve">Marie-Ève</option>
+    </select>
+    <p id="playerCompanionCount">Compagnons acquis: 0/15</p>
+  </div>
+
+  <!-- Conteneur des compagnons -->
+  <div class="container">
+    <!-- Compagnons -->
+    <div class="companion">
+      <img src="images/wi-feroce.jpg" alt="Wi-Féroce">
+      <div class="companion-name">Wi-Féroce</div>
+    </div>
+
+    <div class="companion">
+      <img src="images/FibreCorne.jpg" alt="FibreCorne">
+      <div class="companion-name">FibreCorne</div>
+    </div>
+
+    <div class="companion">
+      <img src="images/HootSpot.jpg" alt="HootSpot">
+      <div class="companion-name">HootSpot</div>
+    </div>
+
+    <div class="companion">
+      <img src="images/RoGiga.jpg" alt="RoGiga">
+      <div class="companion-name">RoGiga</div>
+    </div>
+
+    <div class="companion">
+      <img src="images/FibeRenard.jpg" alt="FibeRenard">
+      <div class="companion-name">FibeRenard</div>
+    </div>
+
+    <div class="companion">
+      <img src="images/Nocturn-Tel.jpg" alt="Nocturn-Tel">
+      <div class="companion-name">Nocturn-Tel</div>
+    </div>
+
+    <div class="companion">
+      <img src="images/Pigeon-Courrier.jpg" alt="Pigeon-Courrier">
+      <div class="companion-name">Pigeon-Courrier</div>
+    </div>
+
+    <div class="companion">
+      <img src="images/DrakG.jpg" alt="DrakG">
+      <div class="companion-name">DrakG</div>
+    </div>
+
+    <div class="companion">
+      <img src="images/CrabBlueTooth.jpg" alt="CrabBlueTooth">
+      <div class="companion-name">CrabBlueTooth</div>
+    </div>
+
+    <div class="companion">
+      <img src="images/HorsiRéseau.jpg" alt="HorsiRéseau">
+      <div class="companion-name">HorsiRéseau</div>
+    </div>
+
+    <div class="companion">
+      <img src="images/BugZilla.jpg" alt="BugZilla">
+      <div class="companion-name">BugZilla</div>
+    </div>
+
+    <div class="companion">
+      <img src="images/OursSAP.jpg" alt="OursSAP">
+      <div class="companion-name">OursSAP</div>
+    </div>
+
+    <div class="companion">
+      <img src="images/CobraVolte.jpg" alt="CobraVolte">
+      <div class="companion-name">CobraVolte</div>
+    </div>
+
+    <div class="companion">
+      <img src="images/Pixel-Perro.jpg" alt="Pixel-Perro">
+      <div class="companion-name">Pixel-Perro</div>
+    </div>
+
+    <div class="companion">
+      <img src="images/TurboDSL.jpg" alt="TurboDSL">
+      <div class="companion-name">TurboDSL</div>
+    </div>
+
+  </div>
+  
+    <script>
+    // Définir les compagnons pour chaque joueur
+    const playerCompanions = {
+      melanie: [], // Exemple, ajouter ceux de Mélanie
+      simonPierre: [], // Exemple, ajouter ceux de Simon-Pierre
+      jonathan: [], // Exemple, ajouter ceux de Jonathan
+      marieEve: [] // Exemple, ajouter ceux de Marie-Ève
+    };
+
+    // Fonction pour filtrer les compagnons
+    document.getElementById('playerSelect').addEventListener('change', function () {
+      const player = this.value;
+      const companions = playerCompanions[player];
+      let count = 0;
+
+      // Masquer tous les compagnons
+      const allCompanions = document.querySelectorAll('.companion');
+      allCompanions.forEach(companion => {
+        companion.style.display = 'none'; // Masque tous les compagnons
+      });
+
+      // Afficher les compagnons du joueur sélectionné
+      companions.forEach(companionId => {
+        const companionElement = document.getElementById(companionId);
+        if (companionElement) {
+          companionElement.style.display = 'block'; // Affiche les compagnons acquis
+          count++;
+        }
+      });
+
+      // Mettre à jour le texte d'acquisition
+      document.getElementById('playerCompanionCount').innerText = `Compagnons acquis: ${count}/15`;
+    });
+  </script>
+
+</body>
+</html>
